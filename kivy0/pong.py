@@ -5,6 +5,7 @@ from kivy.uix.widget import Widget
 # from kivy.uix.textinput import TextInput
 from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.vector import Vector
+from kivy.clock import Clock
 
 
 class PongBall(Widget):
@@ -21,6 +22,8 @@ class PongGame(Widget):
 
 class PongApp(App):
     def build(self):
+        game = PongGame()
+        Clock.schedule_interval(game.update, 1.0/60.0)
         return PongGame()
 
 
